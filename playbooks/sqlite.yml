@@ -1,0 +1,9 @@
+---
+- name: Install SQLite
+  hosts: mylaptop
+  tasks:
+    - name: Install SQLite
+      dnf: name=sqlite state=latest
+
+    - name: Install SQLite libs
+      dnf: name=sqlite-devel state=latest

@@ -1,0 +1,15 @@
+---
+- name: Install Maria
+  hosts: mylaptop
+  tasks: 
+    - name: install maria client
+      dnf: name=mariadb state=latest
+
+    - name: install maria server
+      dnf: name=mariadb-server state=latest
+
+    - name: install maria libraries
+      dnf: name=mariadb-devel state=latest
+
+    - name: Start service
+      service: name=mariadb enabled=yes state=started
