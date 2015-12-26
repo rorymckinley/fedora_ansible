@@ -1,0 +1,6 @@
+---
+- name: Install xchat
+  hosts: mylaptop
+  tasks:
+    - name: install xchat
+      dnf: name=xchat state=latest
