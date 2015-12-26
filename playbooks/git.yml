@@ -1,0 +1,15 @@
+---
+- name: Install git
+  hosts: mylaptop
+  tasks:
+    - name: Clone dotfiles repo
+      git: repo=git@github.com:rorymckinley/dotfiles.git force=no dest=/home/rory/.dotfiles accept_hostkey=True
+
+    - name: Set dotfiles permissions
+      file: group=rory owner=rory state=touch path=/home/rory/dotfiles
+
+    - name: Symlink gitconfig
+      file: path=/home/rory/.gitconfig src=/home/rory/.dotfiles/.gitconfig state=link
+
+    - name: Symlink gitignore
+      file: path=/home/rory/.gitignore src=/home/rory/.dotfiles/.gitignore state=link

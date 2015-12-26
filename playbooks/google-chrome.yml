@@ -1,0 +1,9 @@
+---
+- name: Setup Google Chrome
+  hosts: mylaptop
+  tasks:
+    - name: setup repo
+      copy: src=files/google-chrome.repo dest=/etc/yum.repos.d/google-chrome.repo force=no
+
+    - name: install Chrome
+      dnf: name=google-chrome-stable state=latest

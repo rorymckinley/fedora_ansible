@@ -1,0 +1,6 @@
+---
+- name: Install Thunderbird
+  hosts: mylaptop
+  tasks:
+    - name: install Thunderbird
+      dnf: name=thunderbird state=latest
