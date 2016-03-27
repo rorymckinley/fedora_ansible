@@ -1,0 +1,8 @@
+---
+- name: Bash
+  hosts: mylaptop
+  become: true
+
+  tasks:
+    - name: Copy in .bashrc
+      copy: src=../files/.bashrc dest=/home/rory/.bashrc owner=rory group=rory
