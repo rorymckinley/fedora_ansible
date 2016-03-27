@@ -1,0 +1,30 @@
+---
+- name: Install Erlang and Elixir
+  hosts: mylaptop
+  become: true
+  tasks:
+    - name: Import Erlang Solutions Repo Key
+      rpm_key: key=http://packages.erlang-solutions.com/rpm/erlang_solutions.asc state=present
+
+    - name: Copy in Erlang repo file
+      copy: src=../files/erlang_solutions.repo dest=/etc/yum.repos.d/erlang_solutions.repo
+
+    - name: Install Erlang
+      dnf: name=erlang state=latest
+
+    - name: Create apps directory
+      file: dest=/home/rory/.local/apps state=directory owner=rory group=rory
+
+    - name: Unzip Elixir
+      become_user: rory
+      unarchive: src=../files/elixir-1.2.3.tar.gz dest=/home/rory/.local/apps/ owner=rory group=rory
+
+    - name: Symlink Elixir
+      file: dest=/home/rory/.local/apps/elixir src=/home/rory/.local/apps/elixir-1.2.3 state=link owner=rory group=rory
+
+    - name: Make elixir
+      become_user: rory
+      command: make
+      args:
+        chdir: /home/rory/.local/apps/elixir
+        creates: /home/rory/.local/apps/elixir/lib/ebin
