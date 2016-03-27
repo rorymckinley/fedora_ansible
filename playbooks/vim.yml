@@ -1,0 +1,15 @@
+---
+- name: Setup VIM
+  hosts: mylaptop
+  tasks: 
+    - name: Install vim package
+      dnf: name=vim-enhanced state=latest
+
+    - name: Clone .vim config repo
+      become: true
+      become_user: rory
+      git: repo=git@github.com:rorymckinley/vim.git dest=/home/rory/.vim
+
+    - name: Symlink .vimrc
+      become: true
+      file: src=/home/rory/.vim/vimrc dest=/home/rory/.vimrc owner=rory group=rory state=link
