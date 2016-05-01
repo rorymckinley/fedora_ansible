@@ -1,0 +1,23 @@
+---
+- name: Setup docker
+  hosts: mylaptop
+  tasks:
+    - name: Initialise docker repo
+      yum_repository:
+        name: Docker Repository
+        baseurl: https://yum.dockerproject.org/repo/main/fedora/$releasever/
+        enabled: yes
+        gpgcheck: yes
+        gpgkey: https://yum.dockerproject.org/gpg
+
+    - name: Install docker package
+      yum:
+        name: docker-engine
+        state: present
+
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
