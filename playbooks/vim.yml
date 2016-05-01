@@ -8,7 +8,7 @@
     - name: Clone .vim config repo
       become: true
       become_user: rory
-      git: repo=git@github.com:rorymckinley/vim.git dest=/home/rory/.vim
+      git: repo=git@github.com:rorymckinley/vim.git dest=/home/rory/.vim update=no
 
     - name: Symlink .vimrc
       become: true
