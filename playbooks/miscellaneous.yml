@@ -1,0 +1,6 @@
+---
+- name: Install miscellaneous
+  hosts: mylaptop
+  tasks:
+    - name: Install wget
+      dnf: name=wget state=latest
