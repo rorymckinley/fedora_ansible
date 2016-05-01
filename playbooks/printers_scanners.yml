@@ -1,0 +1,12 @@
+---
+- name: Setup VIM
+  hosts: mylaptop
+  tasks: 
+    - name: Scanner drivers
+      dnf: name=sane-backends-drivers-scanners state=latest
+
+    - name: Xsane
+      dnf: name=xsane state=latest
+
+    - name: Hplip
+      dnf: name=hplip-gui state=latest
