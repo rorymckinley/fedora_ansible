@@ -7,4 +7,15 @@
       file: dest=/home/rory/.local/apps state=directory owner=rory group=rory
 
     - name: Unpack Node
-      unarchive: src=../files/node-v5.9.1-linux-x64.tar.xz dest=/home/rory/.local/apps
+      become_user: rory
+      unarchive: src=../files/node-v5.9.1-linux-x64.tar.xz dest=~/.local/apps
+
+    - name: Setup .bashrc for node
+      become_user: rory
+      lineinfile:
+        dest: ~/.bashrc
+        line: "{{ item }}"
+      with_items:
+        - 'PATH=$HOME/.local/apps/node/bin:$PATH # For nodejs'
+        - 'export NODE_PATH=$HOME/.local/apps/node/lib'
+
