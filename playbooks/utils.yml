@@ -1,0 +1,17 @@
+---
+- name: Arb utility stuff
+  hosts: mylaptop
+  become: true
+  tasks:
+    - name: Ack
+      dnf:
+        name: "{{ item }}"
+        state: present
+      with_items:
+        - ack
+        - apcupsd
+        - dar
+        - tomboy
+        - gnote
+        - ImageMagick
+
