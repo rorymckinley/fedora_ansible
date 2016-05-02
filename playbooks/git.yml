@@ -13,3 +13,16 @@
 
     - name: Symlink gitignore
       file: path=/home/rory/.gitignore src=/home/rory/.dotfiles/.gitignore state=link
+
+    - name: Setup .bashrc for node
+      become_user: rory
+      lineinfile:
+        dest: ~/.bashrc
+        line: "{{ item }}"
+      with_items:
+        - 'export GIT_PS1_SHOWDIRTYSTATE=true'
+        - 'export GIT_PS1_SHOWUNTRACKEDFILES=true'
+        - 'export GIT_PS1_SHOWDIRTYSTATE=1'
+        - 'source "/usr/share/git-core/contrib/completion/git-prompt.sh"'
+        - 'PS1="\\W : \[\e[34;1m\]\$(__git_ps1)\[\e[0m\] : \[\e[32;1m\]\$(~/.rvm/bin/rvm-prompt v g)\[\e[0m\]\$ "'
+

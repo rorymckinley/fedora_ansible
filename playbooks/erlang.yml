@@ -28,3 +28,9 @@
       args:
         chdir: /home/rory/.local/apps/elixir
         creates: /home/rory/.local/apps/elixir/lib/ebin
+
+    - name: Add path to elixir
+      become_user: rory
+      lineinfile:
+        dest: ~/.bashrc
+        line: 
