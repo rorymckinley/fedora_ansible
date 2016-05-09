@@ -14,10 +14,10 @@
     - name: Symlink gitignore
       file: path=/home/rory/.gitignore src=/home/rory/.dotfiles/.gitignore state=link
 
-    - name: Setup .bashrc for node
+    - name: Setup .bashrc for git
       become_user: rory
       lineinfile:
-        dest: ~/.bashrc
+        dest: /home/rory/.bashrc
         line: "{{ item }}"
       with_items:
         - 'export GIT_PS1_SHOWDIRTYSTATE=true'
