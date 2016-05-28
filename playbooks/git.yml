@@ -3,10 +3,10 @@
   hosts: mylaptop
   tasks:
     - name: Clone dotfiles repo
-      git: repo=git@github.com:rorymckinley/dotfiles.git force=no dest=/home/rory/.dotfiles accept_hostkey=True
+      git: repo=git@github.com:rorymckinley/dotfiles.git force=no dest=/home/rory/.dotfiles accept_hostkey=True update=no
 
     - name: Set dotfiles permissions
-      file: group=rory owner=rory state=touch path=/home/rory/dotfiles
+      file: group=rory owner=rory state=directory path=/home/rory/.dotfiles recurse=yes
 
     - name: Symlink gitconfig
       file: path=/home/rory/.gitconfig src=/home/rory/.dotfiles/.gitconfig state=link

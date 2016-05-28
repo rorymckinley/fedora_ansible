@@ -3,7 +3,7 @@
   hosts: mylaptop
   become: true
   tasks:
-    - name: Ack
+    - name: Packages
       dnf:
         name: "{{ item }}"
         state: present
@@ -15,4 +15,10 @@
         - gnote
         - ImageMagick
         - tlp
+        - hamster-time-tracker
 
+    - name: Services
+      service:
+        name: fstrim.timer
+        state: started
+        enabled: yes

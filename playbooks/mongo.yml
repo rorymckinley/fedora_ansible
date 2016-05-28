@@ -8,5 +8,5 @@
     - name: Install mongodb-server
       dnf: name=mongodb-server state=latest
 
-    - name: Start service
-      service: name=mongod enabled=yes state=started
+    # - name: Start service
+    #   service: name=mongod enabled=yes state=started
