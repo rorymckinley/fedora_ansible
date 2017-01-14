@@ -1,25 +1,27 @@
 ---
-- name: Clone dotfiles repo
-  git: repo=git@github.com:rorymckinley/dotfiles.git force=no dest=/home/rory/.dotfiles accept_hostkey=True
+- name: Install git
+  hosts: mylaptop
+  tasks:
+    - name: Clone dotfiles repo
+      git: repo=git@github.com:rorymckinley/dotfiles.git force=no dest=/home/rory/.dotfiles accept_hostkey=True update=no
 
-- name: Set dotfiles permissions
-  file: group=rory owner=rory state=touch path=/home/rory/dotfiles
+    - name: Set dotfiles permissions
+      file: group=rory owner=rory state=directory path=/home/rory/.dotfiles recurse=yes
 
-- name: Symlink gitconfig
-  file: path=/home/rory/.gitconfig src=/home/rory/.dotfiles/.gitconfig state=link
+    - name: Symlink gitconfig
+      file: path=/home/rory/.gitconfig src=/home/rory/.dotfiles/.gitconfig state=link
 
-- name: Symlink gitignore
-  file: path=/home/rory/.gitignore src=/home/rory/.dotfiles/.gitignore state=link
+    - name: Symlink gitignore
+      file: path=/home/rory/.gitignore src=/home/rory/.dotfiles/.gitignore state=link
 
-- name: Setup .bashrc for node
-  become_user: rory
-  lineinfile:
-    dest: ~/.bashrc
-    line: "{{ item }}"
-    with_items:
-      - 'export GIT_PS1_SHOWDIRTYSTATE=true'
-      - 'export GIT_PS1_SHOWUNTRACKEDFILES=true'
-      - 'export GIT_PS1_SHOWDIRTYSTATE=1'
-      - 'source "/usr/share/git-core/contrib/completion/git-prompt.sh"'
-      - 'PS1="\\W : \[\e[34;1m\]\$(__git_ps1)\[\e[0m\] : \[\e[32;1m\]\$(~/.rvm/bin/rvm-prompt v g)\[\e[0m\]\$ "'
-
+    - name: Setup .bashrc for git
+      become_user: rory
+      lineinfile:
+        dest: /home/rory/.bashrc
+        line: "{{ item }}"
+      with_items:
+        - 'export GIT_PS1_SHOWDIRTYSTATE=true'
+        - 'export GIT_PS1_SHOWUNTRACKEDFILES=true'
+        - 'export GIT_PS1_SHOWDIRTYSTATE=1'
+        - 'source "/usr/share/git-core/contrib/completion/git-prompt.sh"'
+        - 'PS1="\\W : \[\e[34;1m\]\$(__git_ps1)\[\e[0m\] : \[\e[32;1m\]\$(/usr/local/rvm/bin/rvm-prompt v g)\[\e[0m\]\$ "'

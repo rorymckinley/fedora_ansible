@@ -9,6 +9,7 @@
         state: present
 
     - name: Setup .bashrc
+      become: yes
       become_user: rory
       lineinfile:
         dest: ~/.bashrc

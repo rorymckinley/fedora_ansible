@@ -13,7 +13,7 @@
     - name: Setup .bashrc for node
       become_user: rory
       lineinfile:
-        dest: ~/.bashrc
+        dest: /home/rory/.bashrc
         line: "{{ item }}"
       with_items:
         - 'PATH=$HOME/.local/apps/node-v6.5.0-linux-x64/bin:$PATH # For nodejs'

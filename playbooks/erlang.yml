@@ -30,7 +30,8 @@
         creates: /home/rory/.local/apps/elixir/lib/ebin
 
     - name: Add path to elixir
+      become: yes
       become_user: rory
       lineinfile:
         dest: ~/.bashrc
-        line: 
+        line: 'PATH=$HOME/.local/apps/elixir/bin:$PATH'

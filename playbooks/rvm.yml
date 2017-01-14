@@ -1,45 +1,9 @@
 ---
 - name: Setup RVM
   hosts: mylaptop
-  tasks: 
-    - name: Check if RVM key is present
-      become: yes
-      become_user: rory
-      shell: gpg --list-keys | grep D39DC0E4
-      register: key_list_result
-
-    - name: Get key
-      become: yes
-      become_user: rory
-      command: gpg2 --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-      when: key_list_result.rc == 1
-
-    - name: Install RVM
-      become: yes
-      become_user: rory
-      shell: curl -L https://get.rvm.io | bash -s stable
-      creates: /home/rory/.rvm
-
-    - name: Check if Ruby-2.3.1 installed
-      shell: rvm list rubies | grep ruby-2.3.1
-      register: ruby_231_check
-
-    - name: Install Ruby-2.3.1
-      become: yes
-      become_user: rory
-      shell: source ~/.bashrc && rvm install ruby-2.3.1
-      when: ruby_231_check.rc == 1
-      args:
-        executable: /bin/bash
-
-    - name: Check if Ruby-2.2.4 installed
-      shell: rvm list rubies | grep ruby-2.2.4
-      register: ruby_224_check
-
-    - name: Install Ruby-2.2.4
-      become: yes
-      become_user: rory
-      shell: source ~/.bashrc && rvm install ruby-2.2.4
-      when: ruby_224_check.rc == 1
-      args:
-        executable: /bin/bash
+  vars:
+    - rvm1_rubies:
+      - 'ruby-2.2.4'
+      - 'ruby-2.3.1'
+  roles:
+    - rvm_io.rvm1-ruby

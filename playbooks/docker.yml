@@ -1,8 +1,11 @@
 ---
-- name: Initialise docker repo
-  copy:
-    src: ../files/docker.repo
-    dest: /etc/yum.repos.d/docker.repo
+- name: Setup docker
+  hosts: mylaptop
+  tasks:
+    - name: Initialise docker repo
+      copy:
+        src: ../files/docker.repo
+        dest: /etc/yum.repos.d/docker.repo
 
 - name: Install docker package
   dnf:
