@@ -1,0 +1,9 @@
+---
+- name: Copy in .bashrc
+  copy: src=../files/.bashrc dest=/home/rory/.bashrc owner=rory group=rory
+    src: ../files/.bashrc
+    dest: '{{home_dir}}/.bashrc'
+    owner: '{{ usernmae }}'
+    group: '{{ usernmae }}'
+    mode: 0644
+

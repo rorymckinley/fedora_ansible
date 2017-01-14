@@ -1,0 +1,39 @@
+- name: Install postgres libs
+  dnf:
+    name: postgresql-devel
+    state: latest
+
+- name: Install postgresql library
+  dnf:
+    name: postgresql-server
+    state: latest
+
+- name: Initialise cluster
+  shell: initdb -D /var/lib/pgsql/data
+  sudo_user: postgres
+  args:
+    creates: /var/lib/pgsql/data/pg_hba.conf 
+
+- name: Copy postgresql.conf
+  copy:
+    src: files/postgresql.conf
+    dest: /var/lib/pgsql/data/postgresql.conf
+    owner: postgres
+    group: postgres
+    mode: 0600
+    force: no
+
+- name: Copy pg_hba.conf
+  copy:
+    src: files/pg_hba.conf
+    dest: /var/lib/pgsql/data/pg_hba.conf
+    owner: postgres
+    group: postgres
+    mode: 0600
+    force: no
+
+- name: Start the service
+  service:
+    name: postgresql
+    enabled: yes
+    state: started

@@ -1,0 +1,10 @@
+---
+- name: Install revelation
+  dnf:
+    name: revelation
+    state: present
+
+- name: Install keepassx
+  dnf:
+    name: keepassx
+    state: present

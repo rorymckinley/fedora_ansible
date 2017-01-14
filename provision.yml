@@ -1,0 +1,30 @@
+---
+- hosts: mylaptop
+  user: root
+  vars:
+    username: rory
+    home_dir: '/home/{{username}}/'
+    apps_dir: '{{home_dir}}.local/apps/'
+  roles:
+    - home
+    - bash
+    - docker
+    - erlang
+    - git
+    - google-chrome
+    - go
+    - miscellaneous
+    - mongo
+    - mysql
+    - node
+    - password-managers
+    - php
+    - postgresql
+    - printers-scanners
+    - redis
+    - skype
+    - sqlite
+    - utils
+    - neovim
+    - xchat
+    - rvm # keep rvm lst as a temporary bash hack - too lazy to fix

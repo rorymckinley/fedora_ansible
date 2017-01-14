@@ -1,0 +1,33 @@
+---
+- name: Install PHP packages
+  dnf:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - php
+    - php-cli
+
+- name: Create PHPUnit directory
+  file:
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    dest: '{{ apps_dir }}/phpunit'
+    state: directory
+
+- name: Create PHPUnit bin directory
+  file:
+    owner: '{{ username }}'
+    group: '{{ username }}'
+    dest: '{{ apps_dir }}/phpunit/bin'
+    state: directory
+
+- name: Copy across PHPUnit executable
+  copy:
+    src: ../files/phpunit-5.7.5.phar
+    dest: '{{ apps_dir }}/phpunit/bin/phpunit'
+
+- name: Add PHPUnit path to .bashrc
+  become_user: rory
+  lineinfile:
+    dest: ~/.bashrc
+    line: 'export $PATH="$PATH:/home/rory/.local/apps/phpunit/bin"'

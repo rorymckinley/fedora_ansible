@@ -1,0 +1,5 @@
+---
+- name: install xchat
+  dnf:
+    name: xchat
+    state: latest

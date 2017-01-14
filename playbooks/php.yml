@@ -1,0 +1,18 @@
+---
+- name: PHP Crap
+  hosts: mylaptop
+  tasks:
+    - name: Install packages
+      dnf:
+        name: "{{ item }}"
+        state: latest
+      with_items:
+        - php
+        - php-cli
+- name: Setup bashrc for PHPUnit
+  become_user: rory
+  lineinfile:
+    dest: ~/.bashrc
+    line: "{{ item }}"
+  with_items:
+    - 'export GIT_PS1_SHOWDIRTYSTATE=true'

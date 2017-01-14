@@ -1,0 +1,34 @@
+---
+- name: Clone dotfiles repo
+  become_user: '{{ username }}'
+  git:
+    repo: git@github.com:rorymckinley/dotfiles.git
+    force: no
+    dest: '{{home_dir}}/.dotfiles'
+      accept_hostkey: True
+
+- name: Symlink gitconfig
+  become_user: '{{ username }}'
+  file:
+    path: '{{home_dir}}.gitconfig'
+    src: '{{home_dir}}.dotfiles/.gitconfig'
+    state: link
+
+- name: Symlink gitignore
+  become_user: '{{ username }}'
+  file:
+    path: '{{home_dir}}.gitignore'
+    src: '{{home_dir}}.dotfiles/.gitignore'
+    state: link
+
+- name: Setup .bashrc for node
+  become_user: rory
+  lineinfile:
+    dest: ~/.bashrc
+    line: "{{ item }}"
+    with_items:
+      - 'export GIT_PS1_SHOWDIRTYSTATE=true'
+      - 'export GIT_PS1_SHOWUNTRACKEDFILES=true'
+      - 'export GIT_PS1_SHOWDIRTYSTATE=1'
+      - 'source "/usr/share/git-core/contrib/completion/git-prompt.sh"'
+      - 'PS1="\\W : \[\e[34;1m\]\$(__git_ps1)\[\e[0m\] : \[\e[32;1m\]\$(~/.rvm/bin/rvm-prompt v g)\[\e[0m\]\$ "'

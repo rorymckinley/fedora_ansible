@@ -1,0 +1,6 @@
+---
+- name: install Thunderbird
+  dnf:
+    name: thunderbird
+    state: latest
+

@@ -1,0 +1,68 @@
+---
+- dnf:
+    name: alsa-lib.i686
+    state: present
+
+- dnf:
+    name: fontconfig.i686
+    state: present
+
+- dnf:
+    name: freetype.i686
+    state: present
+
+- dnf:
+    name: glib2.i686
+    state: present
+
+- dnf:
+    name: libstdc++.i686
+    state: present
+
+- dnf:
+    name: libSM.i686
+    state: present
+
+- dnf:
+    name: libXi.i686
+    state: present
+
+- dnf:
+    name: libXrandr.i686
+    state: present
+
+- dnf:
+    name: libXrender.i686
+    state: present
+
+- dnf:
+    name: libXScrnSaver.i686
+    state: present
+
+- dnf:
+    name: libXv.i686
+    state: present
+
+- dnf:
+    name: pulseaudio-libs.i686
+    state: present
+
+- dnf:
+    name: qt.i686
+    state: present
+
+- dnf:
+    name: qt-x11.i686
+    state: present
+
+- dnf:
+    name: qtwebkit.i686
+    state: present
+
+- dnf:
+    name: zlib.i686
+    state: present
+
+- dnf:
+    name: alsa-plugins-pulseaudio.i686
+    state: present

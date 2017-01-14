@@ -1,0 +1,13 @@
+---
+- name: Arb utils
+  dnf:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ack
+    - apcupsd
+    - dar
+    - tomboy
+    - gnote
+    - ImageMagick
+    - tlp

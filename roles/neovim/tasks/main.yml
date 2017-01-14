@@ -1,0 +1,8 @@
+---
+dnf:
+  name: "{{ item }}"
+  state: present
+with_items:
+  - neovim
+  - python2-neovim
+  - python3-neovim

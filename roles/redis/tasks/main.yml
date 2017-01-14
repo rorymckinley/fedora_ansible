@@ -1,0 +1,7 @@
+---
+- name: Install Redis package
+  dnf: name: redis state: latest
+
+- name: Start Redis service
+  service: name: redis state: started enabled: yes
+

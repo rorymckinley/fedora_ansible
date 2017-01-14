@@ -1,0 +1,23 @@
+---
+- name: Create apps directory
+  file:
+    dest: /home/rory/.local/apps
+    state: directory
+    owner: '{{ username }}'
+    group: '{{ username }}'
+
+- name: Unpack Node
+  become_user: '{{ username }}'
+  unarchive:
+    src: ../files/node-v7.4.0-linux-x64.tar.xz
+    dest: '{{ apps_dir }}'
+
+- name: Setup .bashrc for node
+  become_user: '{{ username }}'
+  lineinfile:
+    dest: ~/.bashrc
+    line: "{{ item }}"
+  with_items:
+    - 'PATH=$HOME/.local/apps/node-v7.4.0-linux-x64/bin:$PATH # For nodejs'
+    - 'export NODE_PATH=$HOME/.local/apps/node-v7.4.0-linux-x64/lib'
+

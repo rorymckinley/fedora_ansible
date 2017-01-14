@@ -1,20 +1,17 @@
 ---
-- name: Setup docker
-  hosts: mylaptop
-  tasks:
-    - name: Initialise docker repo
-			copy:
-				src: ../files/docker.repo
-				dest: /etc/yum.repos.d/docker.repo
+- name: Initialise docker repo
+  copy:
+    src: ../files/docker.repo
+    dest: /etc/yum.repos.d/docker.repo
 
-    - name: Install docker package
-      dnf:
-        name: docker-engine
-        state: present
+- name: Install docker package
+  dnf:
+    name: docker-engine
+    state: present
 
-    - name: Start docker service
-      service:
-        name: docker
-        state: started
-        enabled: yes
+- name: Start docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
 
