@@ -11,9 +11,10 @@
   dnf: name=erlang state=latest
 
 - name: Unzip Elixir
+  become: yes
   become_user: rory
   unarchive:
-    src: ../files/elixir-1.4.0.tar.gz
+    src: ../files/v1.4.0.tar.gz
     dest: '{{ apps_dir }}'
     owner: '{{ username }}'
     group: '{{ username }}'
@@ -35,7 +36,8 @@
     creates: /home/rory/.local/apps/elixir/lib/ebin
 
 - name: Add elxir path to .bashrc
+  become: yes
   become_user: rory
   lineinfile:
-    dest: ~/.bashrc
-    line: 'export $PATH="$PATH:/home/rory/.local/apps/elixir/bin"'
+    dest: '{{ home_dir }}/.bashrc'
+    line: 'export PATH="$PATH:/home/rory/.local/apps/elixir/bin"'

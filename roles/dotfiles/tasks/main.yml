@@ -1,0 +1,16 @@
+---
+- name: Clone dotfiles repo
+  git:
+    repo: git@github.com:rorymckinley/dotfiles.git
+    force: no
+    update: no
+    dest: '{{home_dir}}/.dotfiles'
+    accept_hostkey: True
+
+- name: Set dotfiles permissions
+  file:
+    group: '{{ username }}'
+    owner: '{{ username }}'
+    state: directory
+    path: '{{home_dir}}/.dotfiles'
+    recurse: yes

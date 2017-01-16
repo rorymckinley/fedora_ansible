@@ -27,7 +27,8 @@
     dest: '{{ apps_dir }}/phpunit/bin/phpunit'
 
 - name: Add PHPUnit path to .bashrc
+  become: yes
   become_user: rory
   lineinfile:
-    dest: ~/.bashrc
+    dest: '{{ home_dir }}/.bashrc'
     line: 'export $PATH="$PATH:/home/rory/.local/apps/phpunit/bin"'

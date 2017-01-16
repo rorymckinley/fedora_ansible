@@ -4,5 +4,5 @@
     state: directory
     owner: '{{ username }}'
     group: '{{ username }}'
-    mode: 0644
+    mode: 0755
     dest: '{{ apps_dir }}'

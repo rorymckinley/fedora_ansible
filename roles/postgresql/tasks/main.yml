@@ -10,7 +10,8 @@
 
 - name: Initialise cluster
   shell: initdb -D /var/lib/pgsql/data
-  sudo_user: postgres
+  become: yes
+  become_user: postgres
   args:
     creates: /var/lib/pgsql/data/pg_hba.conf 
 

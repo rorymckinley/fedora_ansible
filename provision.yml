@@ -7,6 +7,7 @@
     apps_dir: '{{home_dir}}.local/apps/'
   roles:
     - home
+    - dotfiles
     - bash
     - docker
     - erlang
@@ -17,14 +18,15 @@
     - mongo
     - mysql
     - node
-    - password-managers
+    - password-manager
     - php
     - postgresql
-    - printers-scanners
+    - printer-scanners
     - redis
     - skype
     - sqlite
     - utils
     - neovim
     - xchat
+    - vim
     - rvm # keep rvm lst as a temporary bash hack - too lazy to fix
