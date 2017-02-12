@@ -1,0 +1,7 @@
+---
+- dnf:
+    name: '{{ item }}'
+    state: latest
+  with_items:
+    - krb5-libs
+    - krb5-workstation

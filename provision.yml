@@ -14,10 +14,12 @@
     - git
     - google-chrome
     - go
+    - kerberos
     - miscellaneous
     - mongo
     - mysql
     - node
+    - openvpn
     - password-manager
     - php
     - postgresql
