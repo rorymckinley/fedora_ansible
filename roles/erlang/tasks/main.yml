@@ -1,12 +1,4 @@
 ---
-- name: Import Erlang Solutions Repo Key
-  rpm_key:
-    key: http://packages.erlang-solutions.com/rpm/erlang_solutions.asc
-    state: present
-
-- name: Copy in Erlang repo file
-  copy: src=../files/erlang_solutions.repo dest=/etc/yum.repos.d/erlang_solutions.repo
-
 - name: Install Erlang
   dnf: name=erlang state=latest
 
