@@ -31,4 +31,4 @@
   become_user: rory
   lineinfile:
     dest: '{{ home_dir }}/.bashrc'
-    line: 'export $PATH="$PATH:/home/rory/.local/apps/phpunit/bin"'
+    line: 'export PATH="$PATH:/home/rory/.local/apps/phpunit/bin"'
