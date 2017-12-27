@@ -8,6 +8,11 @@
     name: postgresql-server
     state: latest
 
+- name: Install postgresql contrib
+  dnf:
+    name: postgresql-contrib
+    state: latest
+
 - name: Initialise cluster
   shell: initdb -D /var/lib/pgsql/data
   become: yes
