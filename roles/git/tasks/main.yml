@@ -26,4 +26,4 @@
     - 'export GIT_PS1_SHOWUNTRACKEDFILES=true'
     - 'export GIT_PS1_SHOWDIRTYSTATE=1'
     - 'source "/usr/share/git-core/contrib/completion/git-prompt.sh"'
-    - 'PS1="\\W : \[\e[34;1m\]\$(__git_ps1)\[\e[0m\] : \[\e[32;1m\]\$(/usr/local/rvm/bin/rvm-prompt v g)\[\e[0m\]\$ "'
+    - 'PS1="\\W : \[\e[34;1m\]\$(__git_ps1)\[\e[0m\] : \[\e[32;1m\]\$(/home/rory/rvm/bin/rvm-prompt v g)\[\e[0m\]\$ "'

@@ -3,7 +3,14 @@
   hosts: mylaptop
   vars:
     - rvm1_rubies:
+      - 'ruby-2.1.5'
       - 'ruby-2.2.4'
       - 'ruby-2.3.1'
+      - 'ruby-2.3.6'
+      - 'ruby-2.4.2'
+      - 'ruby-2.4.3'
+    - rvm1_bundler_install: True
+    - rvm1_install_path: '~/.rvm'
+    - rvm1_user: 'rory'
   roles:
     - rvm_io.rvm1-ruby

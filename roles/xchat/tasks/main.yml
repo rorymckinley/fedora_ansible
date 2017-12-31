@@ -1,5 +1,5 @@
 ---
-- name: install xchat
+- name: install hexchat
   dnf:
-    name: xchat
+    name: hexchat
     state: latest
