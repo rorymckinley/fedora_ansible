@@ -1,0 +1,19 @@
+---
+- name: Unpack Node
+  become: yes
+  become_user: '{{ username }}'
+  unarchive:
+    src: ../files/heroku-linux-x64.tar.gz
+    dest: '{{ apps_dir }}'
+    owner: '{{ username }}'
+    group: '{{ username }}'
+
+- name: Setup .bashrc for node
+  become: yes
+  become_user: '{{ username }}'
+  lineinfile:
+    dest: '{{ home_dir }}/.bashrc'
+    line: '{{ item }}'
+  with_items:
+    - 'PATH=PATH:$HOME/.local/apps/heroku/bin
+
