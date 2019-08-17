@@ -1,13 +1,26 @@
 ---
-- name: Initialise docker repo
-  copy:
-    src: ../files/docker.repo
-    dest: /etc/yum.repos.d/docker.repo
-
-- name: Install docker package
+- name: Install DNF config manager
   dnf:
-    name: docker-engine
-    state: present
+    name: dnf-plugins-core
+    state: latest
+
+- name: Setup the Docker repo
+  command: dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+
+- name: Install docker ce
+  dnf:
+    name: docker-ce
+    state: latest
+
+- name: Install docker cli
+  dnf:
+    name: docker-cli
+    state: latest
+
+- name: Install containerd.io
+  dnf:
+    name: containerd.io
+    state: latest
 
 - name: Start docker service
   service:
