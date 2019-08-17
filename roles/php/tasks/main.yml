@@ -7,28 +7,28 @@
     - php
     - php-cli
 
-- name: Create PHPUnit directory
+- name: Create Composer directory
   file:
     owner: '{{ username }}'
     group: '{{ username }}'
-    dest: '{{ apps_dir }}/phpunit'
+    dest: '{{ apps_dir }}/composer'
     state: directory
 
 - name: Create PHPUnit bin directory
   file:
     owner: '{{ username }}'
     group: '{{ username }}'
-    dest: '{{ apps_dir }}/phpunit/bin'
+    dest: '{{ apps_dir }}/composer/bin'
     state: directory
 
-- name: Copy across PHPUnit executable
+- name: Copy across Composer executable
   copy:
-    src: ../files/phpunit-5.7.5.phar
-    dest: '{{ apps_dir }}/phpunit/bin/phpunit'
+    src: ../files/composer.phar
+    dest: '{{ apps_dir }}/composer/bin/composer'
 
 - name: Add PHPUnit path to .bashrc
   become: yes
   become_user: rory
   lineinfile:
     dest: '{{ home_dir }}/.bashrc'
-    line: 'export PATH="$PATH:/home/rory/.local/apps/phpunit/bin"'
+    line: 'export PATH="$PATH:/home/rory/.local/apps/composer/bin"'
