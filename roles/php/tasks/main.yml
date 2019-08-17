@@ -26,7 +26,7 @@
     src: ../files/composer.phar
     dest: '{{ apps_dir }}/composer/bin/composer'
 
-- name: Add PHPUnit path to .bashrc
+- name: Add Composer path to .bashrc
   become: yes
   become_user: rory
   lineinfile:
