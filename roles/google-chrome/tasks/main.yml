@@ -6,7 +6,7 @@
 
 - name: Setup limited 3rd party repos
   dnf:
-    name: dnf-workstation-repositories
+    name: fedora-workstation-repositories
     state: latest
 
 - name: Enable chrome repo
