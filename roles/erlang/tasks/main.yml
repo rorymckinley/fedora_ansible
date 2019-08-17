@@ -1,35 +1,5 @@
 ---
-- name: Install Erlang
-  dnf: name=erlang state=latest
-
-- name: Unzip Elixir
-  become: yes
-  become_user: rory
-  unarchive:
-    src: ../files/v1.4.0.tar.gz
-    dest: '{{ apps_dir }}'
-    owner: '{{ username }}'
-    group: '{{ username }}'
-
-- name: Symlink Elixir
-  file:
-    dest: '{{ apps_dir }}/elixir'
-    src:  '{{ apps_dir }}/elixir-1.4.0'
-    state: link
-    owner: '{{ username }}'
-    group: '{{ username }}'
-
-- name: Make elixir
-  become: yes
-  become_user: rory
-  command: make
-  args:
-    chdir: /home/rory/.local/apps/elixir
-    creates: /home/rory/.local/apps/elixir/lib/ebin
-
-- name: Add elxir path to .bashrc
-  become: yes
-  become_user: rory
-  lineinfile:
-    dest: '{{ home_dir }}/.bashrc'
-    line: 'export PATH="$PATH:/home/rory/.local/apps/elixir/bin"'
+- name: Install Elixir
+  dnf:
+    name: elixir
+    state: latest
