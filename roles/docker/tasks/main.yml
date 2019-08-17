@@ -14,7 +14,7 @@
 
 - name: Install docker cli
   dnf:
-    name: docker-cli
+    name: docker-ce-cli
     state: latest
 
 - name: Install containerd.io
