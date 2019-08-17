@@ -1,9 +1,16 @@
 ---
-- name: setup Chrome repo
-  copy:
-    src: files/google-chrome.repo
-    dest: /etc/yum.repos.d/google-chrome.repo
-    force: no
+- name: Install DNF config manager
+  dnf:
+    name: dnf-plugins-core
+    state: latest
+
+- name: Setup limited 3rd party repos
+  dnf:
+    name: dnf-workstation-repositories
+    state: latest
+
+- name: Enable chrome repo
+  command: dnf config-manager --set-enabled google-chrome
 
 - name: install Chrome
   dnf:
