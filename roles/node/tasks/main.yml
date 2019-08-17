@@ -3,7 +3,7 @@
   become: yes
   become_user: '{{ username }}'
   unarchive:
-    src: ../files/node-v7.4.0-linux-x64.tar.xz
+    src: ../files/node-v10.16.3-linux-x64.tar.xz
     dest: '{{ apps_dir }}'
     owner: '{{ username }}'
     group: '{{ username }}'
@@ -15,6 +15,5 @@
     dest: '{{ home_dir }}/.bashrc'
     line: '{{ item }}'
   with_items:
-    - 'PATH=$HOME/.local/apps/node-v7.4.0-linux-x64/bin:$PATH # For nodejs'
-    - 'export NODE_PATH=$HOME/.local/apps/node-v7.4.0-linux-x64/lib'
-
+    - 'PATH=$HOME/.local/apps/node-v10.16.3-linux-x64/bin:$PATH # For nodejs'
+    - 'export NODE_PATH=$HOME/.local/apps/node-v10.16.3-linux-x64/lib'
