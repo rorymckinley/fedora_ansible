@@ -1,4 +1,12 @@
 ---
+- name: Copy across mongo repo file
+  copy:
+    src: '../files/mongodb.repo'
+    dest: '/etc/yum.repos.d/mongodb.repo'
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: Install mongodb
   dnf:
     name: mongodb
