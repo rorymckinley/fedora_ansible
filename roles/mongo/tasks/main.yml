@@ -9,12 +9,7 @@
 
 - name: Install mongodb
   dnf:
-    name: mongodb
-    state: latest
-
-- name: Install mongodb-server
-  dnf:
-    name: mongodb-server
+    name: mongodb-org
     state: latest
 
 - name: Start service
