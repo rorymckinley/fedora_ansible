@@ -15,5 +15,5 @@
     dest: '{{ home_dir }}/.bashrc'
     line: '{{ item }}'
   with_items:
-    - 'export PATH=PATH:$HOME/.local/apps/heroku/bin'
+    - 'export PATH=$PATH:$HOME/.local/apps/heroku/bin'
 
