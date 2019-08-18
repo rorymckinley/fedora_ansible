@@ -1,4 +1,9 @@
 ---
+- name: Install git-core
+  dnf:
+    name: git-core
+    state: latest
+
 - name: Symlink gitconfig
   become: yes
   become_user: '{{ username }}'

@@ -3,3 +3,8 @@
   dnf:
     name: wget
     state: latest
+
+- name: Install sed
+  dnf:
+    name: sed
+    state: latest
